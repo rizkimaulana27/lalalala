@@ -1,0 +1,756 @@
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Crush ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+ --pink:#ff5ca8;
+ --purple:#b56cff;
+ --white:#fff;
+}
+
+body{
+ background:#090310;
+ color:white;
+ font-family:Poppins,sans-serif;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ z-index:-3;
+ background:
+ radial-gradient(circle at 15% 20%,#ff006644,transparent 35%),
+ radial-gradient(circle at 85% 70%,#7400ff44,transparent 40%),
+ radial-gradient(circle at 50% 50%,#200a38,transparent 70%);
+}
+
+#stars{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:-1;
+}
+
+.star{
+ position:absolute;
+ color:white;
+ animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+ to{opacity:.1;transform:scale(.3)}
+}
+
+.screen{
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:25px 15px;
+}
+
+.hidden{display:none!important}
+
+.card{
+ width:100%;
+ max-width:520px;
+ padding:35px 24px;
+ text-align:center;
+ border:1px solid #ff8bc955;
+ background:#12091cdd;
+ backdrop-filter:blur(25px);
+ border-radius:28px;
+ box-shadow:0 0 40px #ff2d9522,
+ 0 0 100px #8b00ff22;
+ animation:enter .8s ease;
+}
+
+@keyframes enter{
+ from{opacity:0;transform:translateY(40px) scale(.94)}
+ to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.tag{
+ font-family:Orbitron;
+ font-size:10px;
+ letter-spacing:4px;
+ color:#ff8fc9;
+ border:1px solid #ff2d9577;
+ padding:10px 15px;
+ border-radius:30px;
+ display:inline-block;
+ margin-bottom:25px;
+}
+
+h1{
+ font-family:Orbitron;
+ font-size:clamp(27px,7vw,43px);
+ font-weight:900;
+ background:linear-gradient(90deg,#ff5ca8,#bd72ff,#fff);
+ background-clip:text;
+ -webkit-background-clip:text;
+ color:transparent;
+}
+
+.subtitle{
+ color:#c5b1d4;
+ font-size:13px;
+ line-height:2;
+ margin:20px 0;
+}
+
+.bear{
+ font-size:90px;
+ margin:15px;
+ display:inline-block;
+ animation:float 3s ease-in-out infinite;
+ filter:drop-shadow(0 0 20px #ff2d95);
+}
+
+@keyframes float{
+ 50%{transform:translateY(-17px) rotate(5deg)}
+}
+
+button{
+ font-family:Poppins;
+ cursor:pointer;
+ transition:.3s;
+}
+
+.btn{
+ padding:15px 25px;
+ border:0;
+ border-radius:50px;
+ font-weight:800;
+ font-size:12px;
+ letter-spacing:1px;
+}
+
+.primary{
+ color:white;
+ background:linear-gradient(100deg,#ff287e,#9b38ff);
+ box-shadow:0 0 25px #ff2d9566;
+}
+
+.primary:hover{
+ transform:scale(1.07);
+ box-shadow:0 0 40px #ff2d95;
+}
+
+.secondary{
+ background:#ffffff10;
+ color:#ff9bc9;
+ border:1px solid #ff8bc955;
+}
+
+.progress{
+ height:7px;
+ background:#ffffff18;
+ border-radius:20px;
+ margin:25px 0;
+ overflow:hidden;
+}
+
+.fill{
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,#ff287e,#b45aff);
+ transition:.5s;
+ box-shadow:0 0 15px #ff2d95;
+}
+
+.question{
+ margin:25px 0;
+ font-size:18px;
+}
+
+.answers{
+ display:grid;
+ gap:12px;
+}
+
+.answer{
+ padding:16px;
+ border-radius:14px;
+ background:#ffffff09;
+ border:1px solid #ffffff25;
+ color:white;
+ font-size:13px;
+}
+
+.answer:hover{
+ background:#ff2d9533;
+ border-color:#ff2d95;
+ transform:scale(1.03);
+}
+
+.envelope{
+ font-size:105px;
+ cursor:pointer;
+ animation:float 2s infinite;
+ filter:drop-shadow(0 0 20px #ff2d95);
+}
+
+.letter{
+ background:linear-gradient(135deg,#fff0f7,#e9d8ff);
+ color:#692d69;
+ padding:25px;
+ margin-top:25px;
+ border-radius:18px;
+ text-align:left;
+ line-height:2;
+ animation:enter .8s;
+}
+
+.letter h2{
+ font-family:"Playfair Display";
+ text-align:center;
+ margin-bottom:20px;
+}
+
+.confess{
+ font-size:65px;
+ margin:25px;
+ animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+ 50%{transform:scale(1.25)}
+}
+
+.buttons{
+ display:flex;
+ gap:12px;
+ justify-content:center;
+ flex-wrap:wrap;
+ margin-top:25px;
+}
+
+#result{
+ margin-top:25px;
+ color:#ff8fc9;
+ line-height:2;
+ font-size:14px;
+}
+
+.glitch{
+ animation:glitch .2s infinite;
+}
+
+@keyframes glitch{
+ 0%{transform:translate(0)}
+ 25%{transform:translate(2px,-1px)}
+ 50%{transform:translate(-2px,1px)}
+ 75%{transform:translate(1px,2px)}
+ 100%{transform:translate(0)}
+}
+
+.confetti{
+ position:fixed;
+ top:-30px;
+ z-index:100;
+ pointer-events:none;
+ animation:fall linear forwards;
+}
+
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(900deg);opacity:0}
+}
+
+.flash{
+ position:fixed;
+ inset:0;
+ background:white;
+ z-index:99;
+ pointer-events:none;
+ opacity:0;
+}
+
+.flash.active{animation:flash .5s}
+
+@keyframes flash{
+ 30%{opacity:.8}
+ 100%{opacity:0}
+}
+
+footer{
+ margin-top:30px;
+ color:#907b9d;
+ font-size:10px;
+ letter-spacing:2px;
+}
+
+/* MUSIC PLAYER */
+
+#musicBtn{
+ position:fixed;
+ bottom:22px;
+ right:18px;
+ z-index:200;
+ padding:12px 19px;
+ border-radius:50px;
+ border:1px solid #ff8bc9;
+ background:linear-gradient(120deg,#ff287e,#9b38ff);
+ color:white;
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:1px;
+ box-shadow:0 0 20px #ff2d9577;
+ cursor:pointer;
+ animation:musicGlow 2s infinite alternate;
+}
+
+@keyframes musicGlow{
+ from{box-shadow:0 0 10px #ff2d9544}
+ to{box-shadow:0 0 30px #ff2d95cc}
+}
+
+.music-note{
+ position:fixed;
+ bottom:78px;
+ right:25px;
+ font-size:12px;
+ color:#ff9bc9;
+ z-index:200;
+}
+
+@media(max-width:480px){
+ .card{padding:30px 18px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div class="flash" id="flash"></div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+ <source src="coming-up-roses.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()">
+ 🎵 MUSIC OFF
+</button>
+
+<div class="music-note">♪ our little soundtrack ♡</div>
+
+<!-- OPENING -->
+
+<section class="screen" id="opening">
+ <div class="card">
+
+  <div class="tag">SYSTEM ACCESS // 001</div>
+
+  <div class="bear">🧸</div>
+
+  <h1 class="glitch">SECRET CRUSH</h1>
+
+  <p class="subtitle">
+   WARNING: Someone has a secret message for you.<br>
+   This experience may cause excessive smiling. 💗
+  </p>
+
+  <button class="btn primary" onclick="startGame()">
+   UNLOCK MY HEART ❤️
+  </button>
+
+  <footer>MADE WITH LOVE © 2026</footer>
+
+ </div>
+</section>
+
+<!-- QUIZ -->
+
+<section class="screen hidden" id="quiz">
+ <div class="card">
+
+  <div class="tag">LOVE DETECTION SYSTEM</div>
+
+  <div class="bear">💗</div>
+
+  <h1>ARE YOU READY?</h1>
+
+  <div class="progress">
+   <div class="fill" id="bar"></div>
+  </div>
+
+  <p id="number" class="subtitle">QUESTION 01</p>
+
+  <h2 class="question" id="question"></h2>
+
+  <div class="answers" id="answers"></div>
+
+  <p id="feedback" class="subtitle"></p>
+
+ </div>
+</section>
+
+<!-- LETTER -->
+
+<section class="screen hidden" id="letterScreen">
+ <div class="card">
+
+  <div class="tag">CONFIDENTIAL MESSAGE</div>
+
+  <h1>ONE LAST SECRET</h1>
+
+  <p class="subtitle">
+   Ada sesuatu yang selama ini ingin aku sampaikan...
+  </p>
+
+  <div class="envelope" onclick="openLetter()">💌</div>
+
+  <p class="subtitle">TAP TO OPEN YOUR LETTER</p>
+
+  <div class="letter hidden" id="letter">
+
+   <h2>Dear, My Favorite Person ♡</h2>
+
+   Hai, kamu.
+
+   <br><br>
+
+   Aku sebenarnya nggak tahu bagaimana cara
+   menjelaskan ini tanpa terdengar terlalu cheesy.
+
+   <br><br>
+
+   Tapi sejak mengenal kamu, ada sesuatu yang
+   berbeda. Hal-hal kecil yang kamu lakukan,
+   cara kamu tertawa, bahkan sekadar melihat
+   namamu muncul di layar...
+
+   <br><br>
+
+   Entah bagaimana, semuanya bisa membuat
+   hariku jauh lebih menyenangkan.
+
+   <br><br>
+
+   Aku nggak tahu masa depan akan membawa kita
+   ke mana. Tapi kalau boleh memilih,
+   aku ingin mengenal kamu lebih jauh.
+
+   <br><br>
+
+   I don't need a perfect story.
+   I just want a beautiful one with you.
+
+   <br><br>
+
+   With love,<br>
+   Someone who secretly likes you. 💗
+
+   <button class="btn primary"
+    style="width:100%;margin-top:25px"
+    onclick="showConfess()">
+    REVEAL THE FINAL QUESTION 💍
+   </button>
+
+  </div>
+ </div>
+</section>
+
+<!-- FINAL -->
+
+<section class="screen hidden" id="confess">
+ <div class="card">
+
+  <div class="tag">FINAL BOSS // LEVEL 999</div>
+
+  <div class="bear">🐻‍❄️</div>
+
+  <h1>LISTEN TO ME...</h1>
+
+  <p class="subtitle">
+   Semua pertanyaan tadi cuma pembukaan.
+   Sekarang aku mau tanya sesuatu yang serius.
+  </p>
+
+  <div class="confess">💍</div>
+
+  <h2 style="color:#ff9bcf;font-size:22px">
+   Mau nggak jadi orang spesial aku?
+  </h2>
+
+  <p class="subtitle">
+   No pressure. Your answer matters to me. ♡
+  </p>
+
+  <div class="buttons">
+
+   <button class="btn primary" onclick="yes()">
+    IYAAAAA 💗
+   </button>
+
+   <button class="btn secondary" onclick="no()">
+    BELUM DULU 🥺
+   </button>
+
+  </div>
+
+  <p id="result"></p>
+
+ </div>
+</section>
+
+<script>
+
+// STARS
+
+for(let i=0;i<100;i++){
+ let s=document.createElement("span");
+
+ s.className="star";
+ s.innerHTML="✦";
+
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.fontSize=(Math.random()*12+5)+"px";
+ s.style.animationDelay=Math.random()*3+"s";
+
+ document.getElementById("stars").appendChild(s);
+}
+
+// MUSIC SYSTEM
+
+const music=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
+
+music.volume=0.45;
+
+function startMusic(){
+ music.play().then(()=>{
+  musicBtn.innerHTML="🎵 MUSIC ON";
+ }).catch(()=>{
+  musicBtn.innerHTML="🔇 TAP TO PLAY";
+ });
+}
+
+function toggleMusic(){
+ if(music.paused){
+  startMusic();
+ }else{
+  music.pause();
+  musicBtn.innerHTML="🔇 MUSIC OFF";
+ }
+}
+
+// NAVIGATION
+
+function show(id){
+ document.querySelectorAll(".screen").forEach(x=>{
+  x.classList.add("hidden");
+ });
+
+ document.getElementById(id).classList.remove("hidden");
+
+ window.scrollTo(0,0);
+}
+
+function flash(){
+ const f=document.getElementById("flash");
+
+ f.classList.remove("active");
+
+ void f.offsetWidth;
+
+ f.classList.add("active");
+}
+
+function startGame(){
+ startMusic();
+ flash();
+
+ setTimeout(()=>{
+  show("quiz");
+  loadQuestion();
+ },200);
+}
+
+// QUIZ
+
+const questions=[
+ {
+  q:"Kalau kita punya satu hari bersama, kamu pilih?",
+  a:["🌹 Dinner romantis","🌌 Stargazing berdua","🎮 Gaming sampai pagi"]
+ },
+ {
+  q:"Apa yang paling penting dalam hubungan?",
+  a:["💗 Kepercayaan","😂 Saling bikin bahagia","🤝 Selalu ada"]
+ },
+ {
+  q:"Kalau aku kasih hadiah?",
+  a:["💐 Bunga","🧸 Boneka","💌 Surat cinta"]
+ },
+ {
+  q:"Kalau seseorang diam-diam suka kamu?",
+  a:["🙈 Kasih kesempatan","😳 Suruh confess","💗 Mungkin aku juga suka"]
+ },
+ {
+  q:"Terakhir... kamu percaya cinta pada pandangan pertama?",
+  a:["YESSS 💗","Mungkin 🤭","Harus kenalan dulu"]
+ }
+];
+
+let current=0;
+let locked=false;
+
+function loadQuestion(){
+
+ let q=questions[current];
+
+ document.getElementById("number").innerText=
+ "QUESTION 0"+(current+1)+" / 05";
+
+ document.getElementById("question").innerText=q.q;
+
+ document.getElementById("bar").style.width=
+ ((current+1)/questions.length*100)+"%";
+
+ let area=document.getElementById("answers");
+
+ area.innerHTML="";
+
+ q.a.forEach(answer=>{
+
+  let b=document.createElement("button");
+
+  b.className="answer";
+  b.innerText=answer;
+
+  b.onclick=()=>{
+
+   if(locked)return;
+
+   locked=true;
+
+   document.getElementById("feedback").innerText=
+   "ANSWER RECEIVED... 💗";
+
+   flash();
+
+   setTimeout(()=>{
+
+    current++;
+    locked=false;
+
+    if(current<questions.length){
+
+     document.getElementById("feedback").innerText="";
+     loadQuestion();
+
+    }else{
+
+     show("letterScreen");
+
+    }
+
+   },800);
+
+  };
+
+  area.appendChild(b);
+
+ });
+}
+
+// LETTER
+
+function openLetter(){
+
+ document.getElementById("letter").classList.remove("hidden");
+
+ flash();
+
+}
+
+// FINAL
+
+function showConfess(){
+
+ flash();
+
+ setTimeout(()=>show("confess"),200);
+
+}
+
+// CONFETTI
+
+function celebrate(){
+
+ flash();
+
+ const emojis=["💗","💕","💖","✨","🌸","❤️","💘","🎉"];
+
+ for(let i=0;i<150;i++){
+
+  let c=document.createElement("div");
+
+  c.className="confetti";
+
+  c.innerText=emojis[
+   Math.floor(Math.random()*emojis.length)
+  ];
+
+  c.style.left=Math.random()*100+"%";
+
+  c.style.fontSize=(15+Math.random()*20)+"px";
+
+  c.style.animationDuration=(2+Math.random()*4)+"s";
+
+  c.style.animationDelay=Math.random()+"s";
+
+  document.body.appendChild(c);
+
+  setTimeout(()=>c.remove(),7000);
+
+ }
+
+}
+
+// YES
+
+function yes(){
+
+ document.getElementById("result").innerHTML=
+ "AAAAAAA SERIUSSS?! 😭💗<br><br>"+
+ "AKU SENENG BANGET!!!<br>"+
+ "Mulai hari ini, semoga ada banyak cerita indah yang bisa kita buat bersama. 🥹❤️<br><br>"+
+ "YOU JUST MADE MY DAY!!!";
+
+ celebrate();
+
+}
+
+// NO
+
+function no(){
+
+ document.getElementById("result").innerHTML=
+ "Nggak apa-apa kok 🥺💗<br><br>"+
+ "Aku tetap menghargai jawabanmu.<br>"+
+ "Terima kasih sudah meluangkan waktu untuk membaca pesan kecil ini. ♡";
+
+}
+
+</script>
+
+</body>
+</html>
